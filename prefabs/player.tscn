@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/pl1.png" type="Texture" id=1]
+[ext_resource path="res://assets/new_dynamicfont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scripts/player.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 32.0
+
+[node name="player" type="KinematicBody2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 2
+hframes = 2
+frame = 3
+region_rect = Rect2( 0, 128, 64, 64 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="lbl_name" type="Label" parent="."]
+margin_left = -100.0
+margin_top = -60.0
+margin_right = 100.0
+margin_bottom = -30.0
+custom_fonts/font = ExtResource( 2 )
+text = "toto"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
