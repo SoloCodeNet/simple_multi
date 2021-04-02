@@ -19,10 +19,6 @@ config/name="2Dbomb"
 run/main_scene="res://prefabs/master_scene.tscn"
 config/icon="res://icon.png"
 
-[autoload]
-
-Network="res://scripts/network.gd"
-
 [debug]
 
 gdscript/warnings/return_value_discarded=false

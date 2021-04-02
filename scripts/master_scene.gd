@@ -8,9 +8,6 @@ export var ip : String = "localhost"
 var nb_pl:=0
 onready var _player = preload("res://prefabs/player.tscn")
 
-
-
-
 func _ready() -> void:
 	pass
 #	get_tree().connect("network_peer_connected",    self, "_on_peer_connected")
@@ -38,7 +35,7 @@ func _on_peer_connected(id):
 	if is_network_master():
 		for k in get_tree().get_network_connected_peers():
 			if k!=id:
-				rpc_id(id,"create_player",k,player_name)
+				rpc_id(id,"create_player",k, $players.get_node(str(k)).pl_name)
 		rpc_id(id,"create_player",get_tree().get_network_unique_id(),player_name)
 	
 

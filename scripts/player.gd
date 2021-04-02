@@ -4,12 +4,14 @@ var speed := 150.0
 var dir   := Vector2.ZERO
 var vel   := Vector2.ZERO
 var id=0
+var pl_name =""
 
 func init(_id:int, _name:String, _pos:Vector2):
 	id = _id
 	print("player name:", id)
 	position=_pos
-	$lbl_name.text = _name
+	pl_name = _name
+	$lbl_name.text = pl_name
 	#If id == selfid should put player skin
 	$Sprite.frame = 0 if not id == get_tree().get_network_unique_id() else 3
 
