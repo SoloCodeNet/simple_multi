@@ -1,10 +1,11 @@
 extends KinematicBody2D
-
-var speed := 150.0
+onready var _bomb = preload("res://prefabs/bomb.tscn")
+var speed := 300.0
 var dir   := Vector2.ZERO
 var vel   := Vector2.ZERO
 var id=0
-var pl_name =""
+var pl_name : =""
+var action  :=false
 
 func init(_id:int, _name:String, _pos:Vector2):
 	id = _id
@@ -21,6 +22,8 @@ func _process(_delta: float) -> void:
 			Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 			Input.get_action_strength("ui_down")  - Input.get_action_strength("ui_up")
 		).normalized()
+		if Input.is_action_just_pressed("ui_accept"):
+			rpc("setup_bomb", "toto", position, id)
 		vel = dir * speed
 		vel = move_and_slide(vel, Vector2.UP)
 		rpc("update_position",position)
@@ -28,3 +31,12 @@ func _process(_delta: float) -> void:
 		
 remote func update_position(pos):
 	position = pos
+	
+sync func setup_bomb(bomb_name, pos, by_who)->void:
+	var b = _bomb.instance()
+	b.set_name(bomb_name)
+	get_parent().add_child(b)
+	b.position = pos
+	b.from_player = by_who
+	
+	pass
