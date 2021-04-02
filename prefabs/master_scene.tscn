@@ -155,16 +155,16 @@ __meta__ = {
 
 [node name="positions" type="Node2D" parent="."]
 
-[node name="pos1" type="Position2D" parent="positions"]
+[node name="pos0" type="Position2D" parent="positions"]
 position = Vector2( 96, 96 )
 
-[node name="pos2" type="Position2D" parent="positions"]
+[node name="pos1" type="Position2D" parent="positions"]
 position = Vector2( 608, 352 )
 
-[node name="pos3" type="Position2D" parent="positions"]
+[node name="pos2" type="Position2D" parent="positions"]
 position = Vector2( 608, 96 )
 
-[node name="pos4" type="Position2D" parent="positions"]
+[node name="pos3" type="Position2D" parent="positions"]
 position = Vector2( 96, 352 )
 
 [node name="players" type="Node2D" parent="."]

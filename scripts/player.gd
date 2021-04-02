@@ -3,7 +3,6 @@ extends KinematicBody2D
 var speed := 150.0
 var dir   := Vector2.ZERO
 var vel   := Vector2.ZERO
-var slave_position := Vector2.ZERO
 var id=0
 
 func init(_id:int, _name:String, _pos:Vector2):
@@ -22,9 +21,8 @@ func _process(_delta: float) -> void:
 		).normalized()
 		vel = dir * speed
 		vel = move_and_slide(vel, Vector2.UP)
+		rpc("update_position",position)
 		#rset_unreliable("update_position",position)
-	else:
-		position = slave_position
 		
 remote func update_position(pos):
-	slave_position = pos
+	position = pos
